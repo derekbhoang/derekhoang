@@ -1,0 +1,490 @@
+.shell {
+  --nav-shell-padding-x: clamp(0.75rem, 3vw, 1.5rem);
+  --nav-shell-padding-y: clamp(0.75rem, 2vw, 1.35rem);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  padding: var(--nav-shell-padding-y) var(--nav-shell-padding-x);
+  font-family: var(--font-geist-mono), "Courier New", monospace;
+}
+
+.commandBar {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.55rem, 1.2vw, 0.9rem);
+  width: min(100%, 72rem);
+  min-height: 3.5rem;
+  margin: 0 auto;
+  padding: 0.62rem 0.72rem 0.62rem 0.58rem;
+  border: 1px solid rgba(0, 229, 255, 0.28);
+  border-left: 3px solid rgba(0, 229, 255, 0.88);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 18, 0.88), rgba(0, 0, 0, 0.78)),
+    rgba(1, 3, 10, 0.82);
+  box-shadow:
+    0 0 0 1px rgba(177, 94, 255, 0.12),
+    0 18px 42px rgba(0, 0, 0, 0.36),
+    0 0 24px rgba(0, 229, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.62rem;
+  color: #f7fbff;
+  text-decoration: none;
+}
+
+.brandMark {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(0, 229, 255, 0.56);
+  background: rgba(0, 229, 255, 0.07);
+  color: #7cf3ff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.48);
+}
+
+.brandText {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.45rem;
+  overflow: hidden;
+  color: #edf6ff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prompt {
+  color: #b15eff;
+  text-shadow: 0 0 10px rgba(177, 94, 255, 0.62);
+}
+
+.statusDots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding-inline: 0.2rem;
+}
+
+.statusDots span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: rgba(113, 128, 150, 0.72);
+}
+
+.statusDots span:nth-child(1) {
+  background: #00e5ff;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
+}
+
+.statusDots span:nth-child(2) {
+  background: #b15eff;
+  box-shadow: 0 0 10px rgba(177, 94, 255, 0.52);
+}
+
+.separator {
+  color: rgba(125, 243, 255, 0.48);
+  font-size: 0.8rem;
+}
+
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: clamp(0.2rem, 0.8vw, 0.72rem);
+}
+
+.navLink,
+.cta,
+.menuButton,
+.mobileLink,
+.mobileCta {
+  border-radius: 0;
+  letter-spacing: 0;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease,
+    text-shadow 160ms ease;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: 0.38rem 0.42rem;
+  border: 1px solid transparent;
+  background: rgba(0, 229, 255, 0);
+  color: #b8c9d9;
+  font-size: 0.82rem;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navLink::before {
+  content: "[";
+  display: inline-grid;
+  flex: 0 0 0.72rem;
+  width: 0.72rem;
+  place-items: center;
+  margin-right: 0.16rem;
+  color: rgba(0, 229, 255, 0.62);
+}
+
+.navLink::after {
+  content: "]";
+  display: inline-grid;
+  flex: 0 0 0.72rem;
+  width: 0.72rem;
+  place-items: center;
+  margin-left: 0.16rem;
+  color: rgba(177, 94, 255, 0.62);
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  border-color: rgba(0, 229, 255, 0.18);
+  background: rgba(0, 229, 255, 0.05);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.42);
+}
+
+.activeNavLink {
+  border-color: rgba(0, 229, 255, 0.42);
+  background:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.12), rgba(177, 94, 255, 0.1)),
+    rgba(0, 229, 255, 0.04);
+  color: #ffffff;
+  box-shadow:
+    inset 3px 0 0 rgba(0, 229, 255, 0.84),
+    inset 0 0 18px rgba(177, 94, 255, 0.08);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.48);
+}
+
+.activeNavLink::before {
+  content: "$";
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
+}
+
+.activeNavLink::after {
+  content: "_";
+  color: #b15eff;
+  animation: terminalCursorBlink 1.15s steps(2, start) infinite;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 2.2rem;
+  padding: 0.42rem 0.68rem;
+  border: 1px solid rgba(177, 94, 255, 0.55);
+  background:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.12), rgba(177, 94, 255, 0.16)),
+    rgba(5, 7, 16, 0.74);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: inset 0 0 16px rgba(177, 94, 255, 0.09);
+}
+
+.cta::before,
+.mobileCta::before {
+  content: ">";
+  margin-right: 0.35rem;
+  color: #00e5ff;
+}
+
+.cta:hover,
+.cta:focus-visible,
+.mobileCta:hover,
+.mobileCta:focus-visible {
+  border-color: rgba(0, 229, 255, 0.72);
+  color: #ffffff;
+  box-shadow:
+    inset 0 0 18px rgba(0, 229, 255, 0.12),
+    0 0 16px rgba(177, 94, 255, 0.16);
+}
+
+.brand:focus-visible,
+.navLink:focus-visible,
+.cta:focus-visible,
+.menuButton:focus-visible,
+.mobileLink:focus-visible,
+.mobileCta:focus-visible {
+  outline: 2px solid rgba(0, 229, 255, 0.9);
+  outline-offset: 3px;
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  margin-left: auto;
+  min-height: 2.25rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(0, 229, 255, 0.42);
+  background: rgba(0, 229, 255, 0.06);
+  color: #dffbff;
+  font: inherit;
+  font-size: 0.82rem;
+  line-height: 1;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.menuButton:hover,
+.menuButton:focus-visible {
+  border-color: rgba(177, 94, 255, 0.72);
+  color: #ffffff;
+  box-shadow: inset 0 0 16px rgba(0, 229, 255, 0.1);
+}
+
+.mobilePanel {
+  display: none;
+}
+
+.mobilePanelInner {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.5rem;
+}
+
+.mobileMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2rem;
+  padding: 0.3rem 0.52rem 0.52rem;
+  border-bottom: 1px solid rgba(125, 243, 255, 0.16);
+  color: rgba(184, 201, 217, 0.78);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.mobileMeta span:first-child::before {
+  content: "$ ";
+  color: #b15eff;
+}
+
+.mobileMeta span:last-child {
+  color: #7cf3ff;
+}
+
+.mobileMeta span:last-child::before {
+  content: "";
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-right: 0.34rem;
+  border-radius: 999px;
+  background: #00e5ff;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.56);
+}
+
+.mobileLink,
+.mobileCta {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.78rem 0.88rem;
+  border: 1px solid transparent;
+  border-left: 2px solid transparent;
+  color: #d8e8f4;
+  font-size: 0.92rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.mobileLink::before {
+  content: "[";
+  display: inline-grid;
+  flex: 0 0 0.82rem;
+  width: 0.82rem;
+  place-items: center;
+  margin-right: 0.42rem;
+  color: rgba(0, 229, 255, 0.74);
+}
+
+.mobileLink::after {
+  content: "]";
+  display: inline-grid;
+  flex: 0 0 0.82rem;
+  width: 0.82rem;
+  place-items: center;
+  margin-left: 0.42rem;
+  color: rgba(177, 94, 255, 0.74);
+}
+
+.mobileLink:hover,
+.mobileLink:focus-visible {
+  border-color: rgba(0, 229, 255, 0.12);
+  background: rgba(0, 229, 255, 0.08);
+  color: #ffffff;
+}
+
+.activeMobileLink {
+  border-color: rgba(0, 229, 255, 0.22);
+  border-left-color: #00e5ff;
+  background:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.14), rgba(177, 94, 255, 0.08)),
+    rgba(0, 229, 255, 0.04);
+  color: #ffffff;
+  box-shadow: inset 0 0 18px rgba(0, 229, 255, 0.08);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.42);
+}
+
+.activeMobileLink::before {
+  content: "$";
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
+}
+
+.activeMobileLink::after {
+  content: "_";
+  color: #b15eff;
+  animation: terminalCursorBlink 1.15s steps(2, start) infinite;
+}
+
+.mobileCta {
+  margin-top: 0.18rem;
+  border: 1px solid rgba(177, 94, 255, 0.5);
+  background: rgba(177, 94, 255, 0.08);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+@keyframes terminalCursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .commandBar {
+    gap: 0.46rem;
+    min-height: 3.2rem;
+    padding: 0.52rem 0.58rem 0.52rem 0.48rem;
+  }
+
+  .brandMark {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.76rem;
+  }
+
+  .brandText,
+  .navLink,
+  .cta {
+    font-size: 0.76rem;
+  }
+
+  .statusDots,
+  .separator {
+    display: none;
+  }
+
+  .desktopLinks {
+    gap: 0.22rem;
+  }
+
+  .cta {
+    padding-inline: 0.52rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    --nav-shell-padding-x: clamp(0.72rem, 4vw, 1rem);
+    --nav-shell-padding-y: 0.72rem;
+  }
+
+  .commandBar {
+    width: 100%;
+  }
+
+  .desktopLinks,
+  .cta {
+    display: none;
+  }
+
+  .brand {
+    gap: 0.52rem;
+  }
+
+  .brandText {
+    max-width: min(48vw, 14rem);
+    font-size: 0.82rem;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .mobilePanel {
+    display: block;
+    position: absolute;
+    top: calc(100% - var(--nav-shell-padding-y) + 0.5rem);
+    left: var(--nav-shell-padding-x);
+    right: var(--nav-shell-padding-x);
+    width: auto;
+    max-height: calc(100vh - 5.75rem);
+    margin: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 1px solid rgba(0, 229, 255, 0.24);
+    border-left: 3px solid rgba(177, 94, 255, 0.86);
+    background:
+      linear-gradient(180deg, rgba(3, 7, 17, 0.96), rgba(0, 0, 0, 0.9)),
+      rgba(1, 3, 10, 0.94);
+    box-shadow:
+      0 0 0 1px rgba(177, 94, 255, 0.1),
+      0 16px 30px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobilePanel[hidden] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navLink,
+  .cta,
+  .menuButton,
+  .mobileLink,
+  .mobileCta {
+    transition: none;
+  }
+
+  .activeNavLink::after,
+  .activeMobileLink::after {
+    animation: none;
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScannerGridBackground from "@/components/backgrounds/ScannerGridBackground";
+import SiteNavbar from "@/components/navigation/SiteNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ScannerGridBackground />
-        <div className="relative z-10">
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <SiteNavbar />
           {children}
         </div>
       </body>
