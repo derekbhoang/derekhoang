@@ -15,6 +15,8 @@ const navLinks = [
 
 const pingHref = "mailto:derek.b.hoang@gmail.com";
 
+const getShellPath = (href: string) => (href === "/" ? "~" : `~${href}`);
+
 export default function SiteNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobilePanelId = useId();
@@ -85,15 +87,22 @@ export default function SiteNavbar() {
   return (
     <header ref={shellRef} className={styles.shell}>
       <nav className={styles.commandBar} aria-label="Primary navigation">
-        <Link href="/" className={styles.brand} onClick={closeMenu}>
+        <Link
+          href="/"
+          className={styles.brand}
+          aria-label="Derek Hoang home"
+          onClick={closeMenu}
+        >
           <span className={styles.brandMark} aria-hidden="true">
             DH
           </span>
-          <span className={styles.brandText}>
-            <span className={styles.prompt} aria-hidden="true">
-              $
-            </span>
-            Derek Hoang
+          <span className={styles.brandText} aria-hidden="true">
+            <span className={styles.brandUser}>derek</span>
+            <span className={styles.brandPunctuation}>@</span>
+            <span className={styles.brandHost}>portfolio</span>
+            <span className={styles.brandPunctuation}>:</span>
+            <span className={styles.brandPath}>~</span>
+            <span className={styles.brandShell}>$</span>
           </span>
         </Link>
 
@@ -116,16 +125,21 @@ export default function SiteNavbar() {
                 key={link.href}
                 href={link.href}
                 className={`${styles.navLink} ${isActive ? styles.activeNavLink : ""}`}
+                aria-label={link.label}
                 aria-current={getAriaCurrent(link.href)}
               >
-                {link.label}
+                <span>{getShellPath(link.href)}</span>
+                <span className={styles.navPrompt} aria-hidden="true">
+                  <span className={styles.promptDollar}> $</span>
+                  <span className={styles.promptCursor} />
+                </span>
               </Link>
             );
           })}
         </div>
 
         <a href={pingHref} className={styles.cta} aria-label="Email Derek Hoang">
-          Ping me
+          ./ping.sh
         </a>
 
         <button
@@ -136,7 +150,7 @@ export default function SiteNavbar() {
           aria-label={isMenuOpen ? "Close primary navigation" : "Open primary navigation"}
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          <span aria-hidden="true">{">"}</span>
+          <span aria-hidden="true">$</span>
           <span>{isMenuOpen ? "close" : "menu"}</span>
         </button>
       </nav>
@@ -148,7 +162,7 @@ export default function SiteNavbar() {
       >
         <div className={styles.mobilePanelInner}>
           <div className={styles.mobileMeta} aria-hidden="true">
-            <span>nav.list</span>
+            <span>ls ~/nav</span>
             <span>ready</span>
           </div>
           {navLinks.map((link) => {
@@ -159,10 +173,15 @@ export default function SiteNavbar() {
                 key={link.href}
                 href={link.href}
                 className={`${styles.mobileLink} ${isActive ? styles.activeMobileLink : ""}`}
+                aria-label={link.label}
                 aria-current={getAriaCurrent(link.href)}
                 onClick={closeMenu}
               >
-                {link.label}
+                <span>{getShellPath(link.href)}</span>
+                <span className={styles.navPrompt} aria-hidden="true">
+                  <span className={styles.promptDollar}> $</span>
+                  <span className={styles.promptCursor} />
+                </span>
               </Link>
             );
           })}
@@ -172,7 +191,7 @@ export default function SiteNavbar() {
             aria-label="Email Derek Hoang"
             onClick={closeMenu}
           >
-            Ping me
+            ./ping.sh
           </a>
         </div>
       </div>

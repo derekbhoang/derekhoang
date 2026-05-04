@@ -58,7 +58,7 @@
   display: inline-flex;
   align-items: center;
   min-width: 0;
-  gap: 0.45rem;
+  gap: 0;
   overflow: hidden;
   color: #edf6ff;
   font-size: 0.92rem;
@@ -68,9 +68,28 @@
   white-space: nowrap;
 }
 
-.prompt {
+.brandUser {
+  color: #7cf3ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.42);
+}
+
+.brandHost {
+  color: #edf6ff;
+}
+
+.brandPath {
   color: #b15eff;
-  text-shadow: 0 0 10px rgba(177, 94, 255, 0.62);
+  text-shadow: 0 0 10px rgba(177, 94, 255, 0.54);
+}
+
+.brandShell {
+  margin-left: 0.35rem;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
+}
+
+.brandPunctuation {
+  color: rgba(125, 243, 255, 0.58);
 }
 
 .statusDots {
@@ -130,7 +149,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.15rem;
-  padding: 0.38rem 0.42rem;
+  padding: 0.38rem 0.52rem;
   border: 1px solid transparent;
   background: rgba(0, 229, 255, 0);
   color: #b8c9d9;
@@ -138,26 +157,6 @@
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
-}
-
-.navLink::before {
-  content: "[";
-  display: inline-grid;
-  flex: 0 0 0.72rem;
-  width: 0.72rem;
-  place-items: center;
-  margin-right: 0.16rem;
-  color: rgba(0, 229, 255, 0.62);
-}
-
-.navLink::after {
-  content: "]";
-  display: inline-grid;
-  flex: 0 0 0.72rem;
-  width: 0.72rem;
-  place-items: center;
-  margin-left: 0.16rem;
-  color: rgba(177, 94, 255, 0.62);
 }
 
 .navLink:hover,
@@ -178,18 +177,6 @@
     inset 3px 0 0 rgba(0, 229, 255, 0.84),
     inset 0 0 18px rgba(177, 94, 255, 0.08);
   text-shadow: 0 0 10px rgba(0, 229, 255, 0.48);
-}
-
-.activeNavLink::before {
-  content: "$";
-  color: #00e5ff;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
-}
-
-.activeNavLink::after {
-  content: "_";
-  color: #b15eff;
-  animation: terminalCursorBlink 1.15s steps(2, start) infinite;
 }
 
 .cta {
@@ -214,7 +201,7 @@
 
 .cta::before,
 .mobileCta::before {
-  content: ">";
+  content: "$";
   margin-right: 0.35rem;
   color: #00e5ff;
 }
@@ -322,26 +309,6 @@
   text-decoration: none;
 }
 
-.mobileLink::before {
-  content: "[";
-  display: inline-grid;
-  flex: 0 0 0.82rem;
-  width: 0.82rem;
-  place-items: center;
-  margin-right: 0.42rem;
-  color: rgba(0, 229, 255, 0.74);
-}
-
-.mobileLink::after {
-  content: "]";
-  display: inline-grid;
-  flex: 0 0 0.82rem;
-  width: 0.82rem;
-  place-items: center;
-  margin-left: 0.42rem;
-  color: rgba(177, 94, 255, 0.74);
-}
-
 .mobileLink:hover,
 .mobileLink:focus-visible {
   border-color: rgba(0, 229, 255, 0.12);
@@ -360,24 +327,48 @@
   text-shadow: 0 0 10px rgba(0, 229, 255, 0.42);
 }
 
-.activeMobileLink::before {
-  content: "$";
-  color: #00e5ff;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
-}
-
-.activeMobileLink::after {
-  content: "_";
-  color: #b15eff;
-  animation: terminalCursorBlink 1.15s steps(2, start) infinite;
-}
-
 .mobileCta {
   margin-top: 0.18rem;
   border: 1px solid rgba(177, 94, 255, 0.5);
   background: rgba(177, 94, 255, 0.08);
   color: #ffffff;
   font-weight: 700;
+}
+
+.navPrompt {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 1.45rem;
+  width: 1.45rem;
+  opacity: 0;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.62);
+  transition:
+    opacity 140ms ease,
+    text-shadow 140ms ease;
+}
+
+.activeNavLink .navPrompt,
+.activeMobileLink .navPrompt {
+  opacity: 1;
+}
+
+.promptDollar {
+  flex: 0 0 auto;
+}
+
+.promptCursor {
+  flex: 0 0 auto;
+  width: 0.42rem;
+  height: 0.86em;
+  margin-left: 0.12rem;
+  background: #b15eff;
+  box-shadow: 0 0 10px rgba(177, 94, 255, 0.62);
+}
+
+.activeNavLink .promptCursor,
+.activeMobileLink .promptCursor {
+  animation: terminalCursorBlink 1.15s steps(2, start) infinite;
 }
 
 @keyframes terminalCursorBlink {
@@ -483,8 +474,8 @@
     transition: none;
   }
 
-  .activeNavLink::after,
-  .activeMobileLink::after {
+  .activeNavLink .promptCursor,
+  .activeMobileLink .promptCursor {
     animation: none;
   }
 }

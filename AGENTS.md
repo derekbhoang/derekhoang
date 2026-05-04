@@ -9,3 +9,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - This is Derek Hoang's personal website.
 - The website should have a techie vibe.
 - Use a dark theme with neon blue and neon purple as the color palette.
+- Use a Bash-inspired site structure: routes should feel like directories, sections should feel like nested files/folders, and active page location can be shown with terminal-style prompts.
