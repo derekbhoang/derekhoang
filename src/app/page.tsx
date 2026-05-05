@@ -233,6 +233,66 @@ export default function Home() {
           </div>
         </TerminalWindow>
       </section>
+
+      <section
+        id="contact"
+        className={styles.contact}
+        aria-labelledby="contact-title"
+      >
+        <div className={styles.sectionHeader}>
+          <p className={styles.sectionPrompt}>
+            derek@portfolio:~/contact$ ./ping.sh
+          </p>
+          <h2 id="contact-title" className={styles.sectionTitle}>
+            Contact
+          </h2>
+        </div>
+
+        <div className={styles.contactGrid}>
+          <TerminalWindow
+            className={styles.contactScript}
+            title="~/contact/ping.sh"
+            aria-label="Contact Derek terminal command"
+          >
+            <div className={styles.contactCommandOutput}>
+              <p className={styles.contactStatus}>
+                <span>status</span>
+                <strong>ready for messages</strong>
+              </p>
+              <p>
+                For the fastest route, send Derek an email. Social links are
+                mounted next door as readable contact entries.
+              </p>
+              <a href="mailto:derek.b.hoang@gmail.com">send email</a>
+            </div>
+          </TerminalWindow>
+
+          <TerminalWindow
+            className={styles.contactDirectory}
+            title="~/contact/links.json"
+            aria-label="Contact links directory"
+          >
+            <ul className={styles.contactLinkList}>
+              {contactLinks.map(({ label, href, value }) => {
+                const isExternal = href.startsWith("https://");
+
+                return (
+                  <li key={label}>
+                    <span>{label}</span>
+                    <a
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                    >
+                      {value}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </TerminalWindow>
+        </div>
+      </section>
     </main>
   );
 }
