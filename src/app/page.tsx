@@ -26,6 +26,33 @@ const contactLinks = [
   },
 ];
 
+const projects = [
+  {
+    name: "portfolio-shell",
+    path: "~/projects/portfolio-shell",
+    status: "active",
+    summary:
+      "A Bash-inspired personal site with neon terminal UI, responsive navigation, and a reusable shell component system.",
+    stack: ["Next.js", "React", "CSS Modules"],
+  },
+  {
+    name: "scanner-grid",
+    path: "~/projects/scanner-grid",
+    status: "live",
+    summary:
+      "An interactive cursor-reactive background that reveals a glowing cyber grid as visitors move through the page.",
+    stack: ["React", "Pointer Events", "CSS"],
+  },
+  {
+    name: "terminal-window",
+    path: "~/projects/terminal-window",
+    status: "shipped",
+    summary:
+      "A reusable terminal frame for file-like sections, command output, contact links, and future project readouts.",
+    stack: ["TypeScript", "A11y", "Design System"],
+  },
+];
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -95,6 +122,44 @@ export default function Home() {
               );
             })}
           </dl>
+        </TerminalWindow>
+      </section>
+      <section
+        id="projects"
+        className={styles.projects}
+        aria-labelledby="projects-title"
+      >
+        <div className={styles.sectionHeader}>
+          <p className={styles.sectionPrompt}>
+            derek@portfolio:~/projects$ ls -la
+          </p>
+          <h2 id="projects-title" className={styles.sectionTitle}>
+            Projects
+          </h2>
+        </div>
+
+        <TerminalWindow
+          className={styles.projectsWindow}
+          title="~/projects/index.output"
+          aria-label="Selected projects terminal output"
+        >
+          <div className={styles.projectList}>
+            {projects.map((project) => (
+              <article key={project.name} className={styles.projectItem}>
+                <div className={styles.projectMeta}>
+                  <span>{project.path}</span>
+                  <span>{project.status}</span>
+                </div>
+                <h3>{project.name}</h3>
+                <p>{project.summary}</p>
+                <ul aria-label={`${project.name} stack`}>
+                  {project.stack.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </TerminalWindow>
       </section>
     </main>

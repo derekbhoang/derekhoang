@@ -24,10 +24,10 @@ export default function TerminalWindow({
 
   return (
     <Element className={windowClassName} aria-label={ariaLabel}>
-      <div className={styles.header} aria-hidden="true">
-        <span />
-        <span />
-        <span />
+      <div className={styles.header}>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
         <code>{title}</code>
       </div>
 
