@@ -10,3 +10,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - The website should have a techie vibe.
 - Use a dark theme with neon blue and neon purple as the color palette.
 - Use a Bash-inspired site structure: routes should feel like directories, sections should feel like nested files/folders, and active page location can be shown with terminal-style prompts.
+
+## File & Code Base Structure
+- Structured and organised code base and files.
