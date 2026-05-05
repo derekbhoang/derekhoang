@@ -140,78 +140,8 @@
 }
 
 .panel {
-  position: relative;
-  display: grid;
-  gap: 1rem;
   width: min(100%, 27rem);
   justify-self: end;
-  padding: 0.78rem;
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  border-left: 3px solid rgba(177, 94, 255, 0.88);
-  background:
-    linear-gradient(180deg, rgba(4, 8, 18, 0.9), rgba(0, 0, 0, 0.78)),
-    rgba(1, 3, 10, 0.84);
-  box-shadow:
-    0 0 0 1px rgba(177, 94, 255, 0.12),
-    0 24px 60px rgba(0, 0, 0, 0.36),
-    0 0 30px rgba(0, 229, 255, 0.1);
-  overflow: hidden;
-}
-
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(124, 210, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(177, 94, 255, 0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
-  opacity: 0.28;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 74%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 74%);
-}
-
-.panelHeader {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.32rem;
-  min-width: 0;
-  min-height: 2.05rem;
-  padding: 0 0.28rem 0.48rem;
-  border-bottom: 1px solid rgba(125, 243, 255, 0.16);
-}
-
-.panelHeader span {
-  width: 0.48rem;
-  height: 0.48rem;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: rgba(113, 128, 150, 0.76);
-}
-
-.panelHeader span:nth-child(1) {
-  background: #00e5ff;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.66);
-}
-
-.panelHeader span:nth-child(2) {
-  background: #b15eff;
-  box-shadow: 0 0 10px rgba(177, 94, 255, 0.56);
-}
-
-.panelHeader code {
-  min-width: 0;
-  margin-left: auto;
-  overflow: hidden;
-  color: rgba(216, 232, 244, 0.74);
-  font: inherit;
-  font-size: 0.72rem;
-  line-height: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .portraitFrame {
@@ -325,12 +255,21 @@
   outline-offset: 3px;
 }
 
+.about,
 .projects {
   display: grid;
   gap: 1.35rem;
   width: min(100%, 72rem);
   margin: 0 auto;
-  padding: 0 clamp(1rem, 3vw, 1.5rem) 6rem;
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+}
+
+.about {
+  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.projects {
+  padding-bottom: 6rem;
 }
 
 .sectionHeader {
@@ -369,6 +308,109 @@
   text-shadow:
     0 0 16px rgba(0, 229, 255, 0.24),
     0 0 28px rgba(177, 94, 255, 0.18);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.aboutReadme,
+.aboutManifest {
+  width: 100%;
+}
+
+.aboutReadmeBody {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  padding: 0.18rem 0.08rem 0.22rem;
+}
+
+.aboutReadmeBody p {
+  margin: 0;
+  color: #c8d8e8;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+.aboutReadmeBody p:first-child {
+  color: #edf8ff;
+}
+
+.aboutReadmeBody p::before {
+  content: "> ";
+  color: #00e5ff;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.58);
+}
+
+.aboutCommandList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.46rem;
+  margin: 0;
+}
+
+.aboutCommand {
+  display: grid;
+  gap: 0.34rem;
+  padding: 0.62rem 0.66rem;
+  border: 1px solid rgba(125, 243, 255, 0.12);
+  background: rgba(0, 229, 255, 0.04);
+}
+
+.aboutCommand dt,
+.aboutCommand dd {
+  margin: 0;
+  min-width: 0;
+  line-height: 1.38;
+  letter-spacing: 0;
+}
+
+.aboutCommand dt {
+  color: #7cf3ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.44);
+}
+
+.aboutCommand dt::before {
+  content: "$ ";
+  color: #b15eff;
+}
+
+.aboutCommand dd {
+  color: #d8e8f4;
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.aboutStack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.46rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aboutStack li {
+  padding: 0.38rem 0.5rem;
+  border: 1px solid rgba(177, 94, 255, 0.22);
+  background: rgba(177, 94, 255, 0.08);
+  color: #f1e7ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 .projectsWindow {
@@ -493,6 +535,10 @@
     width: min(100%, 34rem);
     justify-self: start;
   }
+
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 560px) {
@@ -514,8 +560,16 @@
     font-size: clamp(2.9rem, 16vw, 4.65rem);
   }
 
+  .about,
   .projects {
     padding-inline: 0.78rem;
+  }
+
+  .about {
+    padding-bottom: 3.4rem;
+  }
+
+  .projects {
     padding-bottom: 4rem;
   }
 
@@ -530,14 +584,6 @@
 
   .commandList a {
     width: 100%;
-  }
-
-  .panel {
-    padding: 0.62rem;
-  }
-
-  .panelHeader code {
-    max-width: 62%;
   }
 
   .identityLine {

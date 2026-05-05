@@ -26,6 +26,23 @@ const contactLinks = [
   },
 ];
 
+const aboutCommands = [
+  {
+    command: "./build",
+    output: "turn ideas into useful web experiences with clean structure",
+  },
+  {
+    command: "./learn",
+    output: "keep sharpening through experiments, docs, and iteration",
+  },
+  {
+    command: "./ship",
+    output: "polish the details until the interface feels fast and dependable",
+  },
+];
+
+const aboutStack = ["Next.js", "React", "TypeScript", "CSS Modules", "UI craft"];
+
 const projects = [
   {
     name: "portfolio-shell",
@@ -124,6 +141,60 @@ export default function Home() {
           </dl>
         </TerminalWindow>
       </section>
+
+      <section id="about" className={styles.about} aria-labelledby="about-title">
+        <div className={styles.sectionHeader}>
+          <p className={styles.sectionPrompt}>
+            derek@portfolio:~/about$ cat README.md
+          </p>
+          <h2 id="about-title" className={styles.sectionTitle}>
+            About
+          </h2>
+        </div>
+
+        <div className={styles.aboutGrid}>
+          <TerminalWindow
+            className={styles.aboutReadme}
+            title="~/about/README.md"
+            aria-label="About Derek terminal readme"
+          >
+            <div className={styles.aboutReadmeBody}>
+              <p>
+                Derek Hoang is a developer-minded builder drawn to practical
+                software, crisp interfaces, and systems that feel clear from
+                the first interaction.
+              </p>
+              <p>
+                This portfolio leans into that taste: dark mode, neon edges,
+                directory-style sections, and terminal prompts that make the
+                site feel like something you can explore.
+              </p>
+            </div>
+          </TerminalWindow>
+
+          <TerminalWindow
+            className={styles.aboutManifest}
+            title="~/about/manifest.json"
+            aria-label="About Derek working style"
+          >
+            <dl className={styles.aboutCommandList}>
+              {aboutCommands.map((item) => (
+                <div key={item.command} className={styles.aboutCommand}>
+                  <dt>{item.command}</dt>
+                  <dd>{item.output}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <ul className={styles.aboutStack} aria-label="Core stack">
+              {aboutStack.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </TerminalWindow>
+        </div>
+      </section>
+
       <section
         id="projects"
         className={styles.projects}
